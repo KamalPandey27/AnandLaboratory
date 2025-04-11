@@ -95,8 +95,8 @@ function Header() {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-white text-blue-800 font-semibold"
-                    : "bg-blue-500 text-white"
+                    ? "bg-white text-blue-800 font-semibold border-1"
+                    : "bg-blue-600 text-white"
                 } w-full lg:px-4 lg:py-3 px-4 py-3 md:px-3 md:py-2 rounded hover:border-1 hover:bg-white hover:text-blue-800 hover:font-semibold transition-all duration-600 ease-in-out `
               }
             >
