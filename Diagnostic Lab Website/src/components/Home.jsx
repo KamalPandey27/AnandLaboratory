@@ -12,9 +12,10 @@ function Home() {
         <div className="translate-25 h-[70%] flex flex-col gap-10 justify-center">
           <div>
             <h1 className="text-4xl font-semibold text-white">
-              We Can Provide <span className="text-blue-500">Medical</span>{" "}
-              Services <br /> That You Can
-              <span className="text-blue-500"> Trust!</span>
+              We Can Provide{" "}
+              <span className="text-blue-500 text-5xl">Medical</span> Services{" "}
+              <br /> That You Can
+              <span className="text-blue-500 text-5xl"> Trust!</span>
             </h1>
           </div>
           <div className="pb-3 text-white font-semibold text-[15px]">
