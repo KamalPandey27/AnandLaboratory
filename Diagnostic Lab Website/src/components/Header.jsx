@@ -18,7 +18,7 @@ function Header() {
       <nav className=" bg-white sticky top-0 z-50 flex justify-between items-center w-full h-[60px] px-4">
         {/* navbarLogo */}
 
-        <div className="text-blue-600 font-bold cursor-pointer lg:text-[20px] md:text-[16px] text-[17px]">
+        <div className="text-blue-600 font-bold cursor-pointer lg:text-[25px] md:text-[16px] text-[17px]">
           <Link to="/">
             Anand <span className="text-gray-700">Lab</span>
           </Link>
