@@ -9,11 +9,11 @@ function Home() {
       <main className="overflow-x-hidden">
         {/* Hero Section */}
         <section
-          className={`  h-screen w-screen  bg-cover bg-center relative  `}
+          className={` h-screen w-screen  bg-cover bg-center relative  `}
           style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-          <div className="md:translate-25 md:h-[70%] h-[100%] flex flex-col gap-10 justify-center md:items-start items-center relative p-2">
+          <div className=" lg:translate-25 md:translate-5 md:h-[70%] h-[100%] flex flex-col gap-10 justify-center md:items-start items-center relative p-2">
             <div>
               <h1 className="md:text-5xl sm:text-4xl text-[20px] font-semibold text-white">
                 We Can Provide{" "}
@@ -68,8 +68,8 @@ function Home() {
         {/* Hero Section Ends Here */}
 
         {/* Lab Time Section  */}
-        <section className="w-screen h-screen p-5 flex justify-center bg-white sm:relative md:h-[45vh] sm:h-[55vh]">
-          <div className="  flex flex-col gap-5 justify-center items-center sm:flex-wrap lg:gap-18 md:gap-15 sm:absolute sm:-top-13 h-full ">
+        <section className="w-screen  xl:h-[40vh] lg:h-[20vh] p-5 flex justify-center bg-white sm:relative md:h-[25vh] sm:h-[55vh]">
+          <div className=" flex flex-col gap-5 sm:justify-center sm:items-center sm:flex-wrap lg:gap-18 md:gap-15 sm:absolute sm:-top-13  h-full ">
             <div className="overflow-hidden cursor-pointer bg-blue-600 rounded text-white md:p-7 sm:w-[35%] w-full p-5  h-[280px] md:h-[280px] sm:h-[265px] flex flex-col justify-between relative hover:-translate-y-2 transition-all duration-400 ease-in-out hover:shadow-xl/40 hover:shadow-blue-900 ">
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-10"></div>
               <div className="font-bold lg:text-xl md:text-lg z-20">
@@ -147,6 +147,22 @@ function Home() {
           </div>
         </section>
         {/* Lab Time Section Ends */}
+
+        {/* Some Thing About lab section */}
+        <section>
+          <div>
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <div>
+              <img src="" alt="" />
+              <div>7 years</div>
+              <div>Years of Experience</div>
+            </div>
+          </div>
+          <div></div>
+        </section>
+        {/* Ends of Some Thing About lab section  */}
       </main>
     </>
   );
