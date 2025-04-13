@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import menu from "../assets/menu.svg";
-import closeMenu from "../assets/closeMenu.svg";
+import { menu, closeMenu } from "../assets/index";
 function Header() {
   const [Navlist, setNavlist] = useState("translate-x-[200%]");
 
@@ -100,8 +99,7 @@ function Header() {
                 } w-full lg:px-4 lg:py-3 px-4 py-3 md:px-3 md:py-2 rounded hover:border-1 hover:bg-white hover:text-blue-800 hover:font-semibold transition-all duration-600 ease-in-out `
               }
             >
-              {" "}
-              Book Appointment{" "}
+              Book Appointment
             </NavLink>
           </button>
         </div>
@@ -109,7 +107,7 @@ function Header() {
         {/* menu bar  */}
 
         <div onClick={OpenMenu} className="sm:hidden cursor-pointer">
-          <img className="w-8" src={menu} alt="" />
+          <img className="w-8" src={menu} alt="menu" />
         </div>
 
         {/* navbar list for mobile phone */}
@@ -121,7 +119,7 @@ function Header() {
             onClick={CloseMenu}
             className="sm:hidden cursor-pointer absolute right-5"
           >
-            <img className="w-7" src={closeMenu} alt="" />
+            <img className="w-7" src={closeMenu} alt="closeMenu" />
           </div>
           <div className="flex flex-col gap-5">
             <li className="list-none text-lg">
@@ -197,8 +195,7 @@ function Header() {
                   } w-full  px-4 py-3 rounded hover:bg-white hover:text-blue-800 hover:font-semibold transition-all duration-600 ease-in-out hover:border-1 `
                 }
               >
-                {" "}
-                Book Appointment{" "}
+                Book Appointment
               </NavLink>
             </button>
           </div>
