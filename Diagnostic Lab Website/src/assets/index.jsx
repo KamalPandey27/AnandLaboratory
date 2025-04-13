@@ -17,6 +17,8 @@ import srl from "../assets/srl.webp";
 import prognosis from "../assets/prognosis.png";
 import modern from "../assets/modern.svg";
 import lalPath from "../assets/lalPath.png";
+import call from "../assets/call.svg";
+import location from "../assets/location.svg";
 export {
   about1,
   about2,
@@ -37,4 +39,6 @@ export {
   lalPath,
   modern,
   prognosis,
+  call,
+  location,
 };
