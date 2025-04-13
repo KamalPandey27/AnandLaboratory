@@ -264,36 +264,16 @@ function Home() {
         {/* Other section End */}
 
         {/* Testimonial section start */}
-        <section className="flex items-center flex-col justify-center m-auto my-5 w-[95vw] h-[50vh] p-5 relative shadow-[0_0_10px_rgba(0,0,0,0.15)]">
-          <div className="lg:text-4xl font-semibold z-10">
+        <section className="flex items-center sm:gap-0 gap-5 flex-col justify-around m-auto my-5 w-[95vw] xl:h-[50vh]  p-5 md:h-[35vh] sm:h-[45vh] relative shadow-[0_0_10px_rgba(0,0,0,0.15)]">
+          <div className="lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold z-10 text-center">
             Our Collaboration with many Companies{" "}
           </div>
-          <div className="flex gap-3 justify-center items-center  w-full h-[95%] z-10">
-            <img
-              src={lalPath}
-              className="w-[18%] h-[100px] object-contain"
-              alt=""
-            />
-            <img
-              src={thyrocare}
-              className="w-[18%] h-[100px] object-contain"
-              alt=""
-            />
-            <img
-              src={srl}
-              className="w-[18%] h-[100px] object-contain"
-              alt=""
-            />
-            <img
-              src={prognosis}
-              className="w-[18%] h-[100px] object-contain"
-              alt=""
-            />
-            <img
-              src={modern}
-              className="w-[18%] h-[100px] object-contain"
-              alt=""
-            />
+          <div className="grid md:grid-cols-5 grid-cols-3 gap-2 justify-evenly items-center  z-10">
+            <img src={lalPath} className="object-contain" alt="lalPath" />
+            <img src={thyrocare} className="object-contain w-[250px]" alt="" />
+            <img src={srl} className="object-contain" alt="" />
+            <img src={prognosis} className="object-contain" alt="" />
+            <img src={modern} className=" object-contain" alt="" />
           </div>
         </section>
         {/* Testimonial section ends */}
