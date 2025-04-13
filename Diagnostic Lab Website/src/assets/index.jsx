@@ -7,6 +7,16 @@ import emergency from "../assets/emergency.svg";
 import experience from "../assets/experience.svg";
 import heroImage from "../assets/heroImage.png";
 import menu from "../assets/menu.svg";
+import award from "../assets/award.svg";
+import doctors from "../assets/doctors.svg";
+import money from "../assets/money.svg";
+import support from "../assets/support.svg";
+import testimonial from "../assets/testimonial.jpg";
+import thyrocare from "../assets/thyrocare.svg";
+import srl from "../assets/srl.webp";
+import prognosis from "../assets/prognosis.png";
+import modern from "../assets/modern.svg";
+import lalPath from "../assets/lalPath.png";
 export {
   about1,
   about2,
@@ -17,4 +27,14 @@ export {
   experience,
   heroImage,
   menu,
+  award,
+  doctors,
+  money,
+  support,
+  testimonial,
+  srl,
+  thyrocare,
+  lalPath,
+  modern,
+  prognosis,
 };

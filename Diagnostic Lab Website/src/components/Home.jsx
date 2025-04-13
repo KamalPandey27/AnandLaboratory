@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   heroImage,
@@ -8,6 +8,16 @@ import {
   about2,
   about3,
   experience,
+  award,
+  money,
+  support,
+  doctors,
+  testimonial,
+  lalPath,
+  prognosis,
+  srl,
+  thyrocare,
+  modern,
 } from "../assets/index";
 function Home() {
   return (
@@ -188,23 +198,105 @@ function Home() {
             </div>
             <div className="h-[45%] w-full flex flex-col justify-center items-center text-white relative">
               <div className="flex gap-5 sm:text-[16px] text-[10px] ">
-                <div className="flex flex-col justify-center items-center bg-[#3368c6] px-5 py-10 rounded-[100%]">
-                  <span>Happy Clients</span>
-                  <span>9999</span>
+                <div className="flex flex-col justify-center items-center bg-[#3368c6] px-5 py-12 rounded-[100%]">
+                  <span>Awards Winning</span>
+                  <span>9</span>
                 </div>
                 <div className="flex flex-col justify-center items-center bg-[#8a91ac] px-5 py-10 rounded-[100%]">
                   <span>Happy Clients</span>
-                  <span>9999</span>
+                  <span>1500+</span>
                 </div>
               </div>
               <div className="flex flex-col justify-center items-center bg-[#031b4e] px-5 py-10 rounded-[100%] absolute lg:bottom-2 sm:-bottom-17 -bottom-10 sm:text-[16px] text-[10px]">
-                <span>Happy Clients</span>
-                <span>9999</span>
+                <span>Complete Test</span>
+                <span>9999+</span>
               </div>
             </div>
           </div>
         </section>
         {/* Ends of Some Thing About lab section  */}
+
+        {/* Other section start */}
+        <section className=" w-screen lg:h-[55vh]  py-7 flex justify-center items-center ">
+          <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-[90%]  shadow-[0_0_10px_rgba(0,0,0,0.15)] h-[90%] ">
+            <div className="bg-white h-full flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
+              <img src={award} alt="award" className="w-[70px]" />
+              <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
+                Award Winning
+              </div>
+              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur tellus augue.
+              </div>
+            </div>
+            <div className="bg-white h-full  flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
+              <img src={doctors} alt="award" className="w-[70px]" />
+              <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
+                Expet Doctors
+              </div>
+              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur tellus augue.
+              </div>
+            </div>
+            <div className="bg-white h-full flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
+              <img src={money} alt="award" className="w-[70px]" />
+              <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
+                Fair Prices
+              </div>
+              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur tellus augue.
+              </div>
+            </div>
+            <div className="bg-white h-full  flex flex-col justify-evenly items-center p-5 border-gray-300 ">
+              <img src={support} alt="award" className="w-[70px]" />
+              <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
+                24/7 Support
+              </div>
+              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur tellus augue.
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Other section End */}
+
+        {/* Testimonial section start */}
+        <section className="flex items-center flex-col justify-center m-auto my-5 w-[95vw] h-[50vh] p-5 relative shadow-[0_0_10px_rgba(0,0,0,0.15)]">
+          <div className="lg:text-4xl font-semibold z-10">
+            Our Collaboration with many Companies{" "}
+          </div>
+          <div className="flex gap-3 justify-center items-center  w-full h-[95%] z-10">
+            <img
+              src={lalPath}
+              className="w-[18%] h-[100px] object-contain"
+              alt=""
+            />
+            <img
+              src={thyrocare}
+              className="w-[18%] h-[100px] object-contain"
+              alt=""
+            />
+            <img
+              src={srl}
+              className="w-[18%] h-[100px] object-contain"
+              alt=""
+            />
+            <img
+              src={prognosis}
+              className="w-[18%] h-[100px] object-contain"
+              alt=""
+            />
+            <img
+              src={modern}
+              className="w-[18%] h-[100px] object-contain"
+              alt=""
+            />
+          </div>
+        </section>
+        {/* Testimonial section ends */}
       </main>
     </>
   );
