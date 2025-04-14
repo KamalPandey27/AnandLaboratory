@@ -19,6 +19,7 @@ import modern from "../assets/modern.svg";
 import lalPath from "../assets/lalPath.png";
 import call from "../assets/call.svg";
 import location from "../assets/location.svg";
+import HomeContactLogo from "../assets/HomeContactLogo.png";
 export {
   about1,
   about2,
@@ -41,4 +42,5 @@ export {
   prognosis,
   call,
   location,
+  HomeContactLogo,
 };

@@ -16,7 +16,9 @@ import {
   srl,
   thyrocare,
   modern,
+  HomeContactLogo,
 } from "../assets/index";
+import AppointmentForm from "./AppointmentForm.jsx";
 function Home() {
   return (
     <>
@@ -275,6 +277,18 @@ function Home() {
           </div>
         </section>
         {/* Testimonial section ends */}
+
+        {/* Book appointment */}
+        <section className="flex flex-col items-center">
+          <div className="lg:text-4xl/15 md:text-3xl/15 sm:text-2xl/10 text-xl/10 text-center py-5 font-semibold">
+            We Are Always Ready to Help You. <br /> Book An Appointment
+          </div>
+          <div>
+            <img src={HomeContactLogo} alt="HomeContactLogo" />
+          </div>
+        </section>
+        <AppointmentForm PageTitle=" " width="100%" height="h-[40vh]" />
+        {/* book appointment ends */}
       </main>
     </>
   );
