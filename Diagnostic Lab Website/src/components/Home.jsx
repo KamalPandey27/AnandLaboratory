@@ -19,7 +19,6 @@ import {
   HomeContactLogo,
 } from "../assets/index";
 import AppointmentForm from "./AppointmentForm.jsx";
-import { useState } from "react";
 function Home() {
   return (
     <>
