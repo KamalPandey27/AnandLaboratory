@@ -186,11 +186,12 @@ function Header() {
           <div>
             <button className="cursor-pointer w-[180px] pb-8 ">
               <NavLink
+                onClick={CloseMenu}
                 to="/AppointmentForm"
                 className={({ isActive }) =>
                   `${
                     isActive
-                      ? "bg-white text-blue-800 font-semibold"
+                      ? "bg-white text-blue-800 font-semibold border-1"
                       : "bg-blue-600 text-white"
                   } w-full  px-4 py-3 rounded hover:bg-white hover:text-blue-800 hover:font-semibold transition-all duration-600 ease-in-out hover:border-1 `
                 }
