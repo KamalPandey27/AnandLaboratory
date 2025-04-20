@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Services from "./components/Services";
 import AppointmentForm from "./components/AppointmentForm";
 import Layout from "./Layout";
-import { Analytics } from "@vercel/analytics/react";
 
 import {
   RouterProvider,
@@ -28,7 +27,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <Analytics />
     </>
   );
 }
