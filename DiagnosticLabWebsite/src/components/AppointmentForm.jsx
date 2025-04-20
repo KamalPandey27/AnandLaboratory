@@ -24,10 +24,20 @@ function AppointmentForm({
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const submissionData = {
+      ...formData,
+      phoneNumber: Number(formData.phoneNumber),
+    };
     try {
-      await axios.post("/formdata", formData);
+      await axios.post("/formdata", submissionData);
       alert("Form submitted successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        subject: "",
+        message: "",
+      });
     } catch (err) {
       console.error("Error submitting form:", err);
       alert("Error submitting form");
@@ -71,12 +81,12 @@ function AppointmentForm({
               </div>
               <div className="flex gap-5">
                 <input
-                  type="text"
+                  type="number"
                   name="phoneNumber"
                   placeholder="Phone"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
-                  value={formData.phone}
+                  value={formData.phoneNumber}
                 />
                 <input
                   type="text"
@@ -108,13 +118,12 @@ function AppointmentForm({
 
           <div className={`xl:w-[50%] xl:h-full w-full ${height}`}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!..."
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3475.8333418014927!2d76.97678547503693!3d29.404431048611386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dda390ff67635%3A0x8ef81057f3962807!2sBhawna%20Chowk%2C%20Tehsil%20Camp%2C%20Panipat%20Taraf%20Ansar%2C%20Panipat%2C%20Haryana%20132103!5e0!3m2!1sen!2sin!4v1745179017776!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
+              allowfullscreen=""
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </div>
