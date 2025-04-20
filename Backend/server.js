@@ -1,10 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const AnandLabData = require("./models/AnandLabData.js");
 const app = express();
 app.use(express.json());
-const port = process.env.PORT || 5000;
+app.use(cors());
+
+const port = process.env.PORT;
 mongoose
   .connect("mongodb://localhost:27017/AnandLabDatabase")
   .then((res) => console.log("express connected to mongoose"))

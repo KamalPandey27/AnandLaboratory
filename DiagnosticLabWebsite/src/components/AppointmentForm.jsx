@@ -10,7 +10,7 @@ function AppointmentForm({
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     subject: "",
     message: "",
   });
@@ -72,7 +72,7 @@ function AppointmentForm({
               <div className="flex gap-5">
                 <input
                   type="text"
-                  name="phone"
+                  name="phoneNumber"
                   placeholder="Phone"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
