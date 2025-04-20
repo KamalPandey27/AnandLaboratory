@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   server: {
     proxy: {
-      "/formdata": "http://localhost:3000/formdata",
+      "/formdata": "http://localhost:3000",
     },
   },
   plugins: [react(), tailwindcss()],
