@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require("nodemailer");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -22,13 +23,44 @@ app.post("/formdata", async (req, res) => {
     subject,
     message,
   });
+
   try {
     await data_1.save();
-    res.send("Data send successfully");
+
+    // Email setup
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER, // your Gmail address
+        pass: process.env.GMAIL_PASS, // your Gmail app password
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER, // send to yourself
+      subject: `New Appointment: ${subject}`,
+      html: `
+        <h2>New Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.send("Data saved and email sent successfully.");
   } catch (error) {
     console.log(error);
+    res.status(500).send("Something went wrong.");
   }
 });
+
 app.listen(port, () => {
   console.log("Server run successfully");
 });
+
+// mongodb+srv://kamal0000027:6neOWA6VR5BhsaXx@anandlabdatabase.phanatw.mongodb.net/?retryWrites=true&w=majority&appName=AnandLabDatabase
