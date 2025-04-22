@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const AnandLabDataSchema = mongoose.Schema({
+const AnandLabDataSchema = new mongoose.Schema({
   name: String,
   email: String,
   phoneNumber: Number,
