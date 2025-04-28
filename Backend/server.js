@@ -10,7 +10,7 @@ app.use(cors());
 
 const port = process.env.PORT;
 mongoose
-  .connect("mongodb://localhost:27017/AnandLabDatabase")
+  .connect(process.env.MONGO_URL)
   .then((res) => console.log("express connected to mongoose"))
   .catch((err) => console.log(err));
 
@@ -62,5 +62,3 @@ app.post("/formdata", async (req, res) => {
 app.listen(port, () => {
   console.log("Server run successfully");
 });
-
-// mongodb+srv://kamal0000027:6neOWA6VR5BhsaXx@anandlabdatabase.phanatw.mongodb.net/?retryWrites=true&w=majority&appName=AnandLabDatabase
