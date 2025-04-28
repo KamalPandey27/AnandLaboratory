@@ -6,13 +6,7 @@ const mongoose = require("mongoose");
 const AnandLabData = require("./models/AnandLabData.js");
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://diagnostic-lab-eight.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const port = process.env.PORT;
 mongoose
