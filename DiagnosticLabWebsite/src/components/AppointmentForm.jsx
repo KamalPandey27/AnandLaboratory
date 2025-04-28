@@ -29,7 +29,10 @@ function AppointmentForm({
       phoneNumber: Number(formData.phoneNumber),
     };
     try {
-      await axios.post("/formdata", submissionData);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/formdata`,
+        submissionData
+      );
       alert("Form submitted successfully!");
       setFormData({
         name: "",
