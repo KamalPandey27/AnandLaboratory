@@ -91,8 +91,8 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-2 lg:text-[16px] md:text-[15px] text-[14px] w-[90%]">
             <div className="text-center">
-              Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod
-              tempor incididunt.
+              We’re here to serve you with expert care and support during the
+              following hours:
             </div>
             <div className="flex justify-between">
               <span>Monday - Friday</span>
