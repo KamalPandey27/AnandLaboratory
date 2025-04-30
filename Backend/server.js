@@ -13,11 +13,11 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then((res) => {
     console.log("express connected to mongoose");
-    AnandLabData.deleteMany({})
-      .then(() =>
-        console.log("All documents deleted from AnandLabData collection")
-      )
-      .catch((err) => console.log("Error deleting documents:", err));
+    // AnandLabData.deleteMany({})
+    //   .then(() =>
+    //     console.log("All documents deleted from AnandLabData collection")
+    //   )
+    //   .catch((err) => console.log("Error deleting documents:", err));
   })
   .catch((err) => console.log(err));
 
