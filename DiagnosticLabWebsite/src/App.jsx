@@ -4,6 +4,7 @@ import Contact from "./components/Contact";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import AppointmentForm from "./components/AppointmentForm";
+import LearnMore from "./components/LearnMore";
 import Layout from "./Layout";
 
 import {
@@ -21,6 +22,7 @@ function App() {
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="AppointmentForm" element={<AppointmentForm />} />
+        <Route path="LearnMore" element={<LearnMore />} />
       </Route>
     )
   );

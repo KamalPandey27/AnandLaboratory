@@ -29,9 +29,11 @@ function TestCard(props) {
             {props.des}
           </p>
         </div>
-        <button className="p-2 w-full mt-4 text-white bg-blue-700 font-medium text-base sm:text-lg rounded-md">
-          <NavLink to="/AppointmentForm">Book Now</NavLink>
-        </button>
+        <NavLink to="/AppointmentForm">
+          <button className="p-2 w-full mt-4 text-white bg-blue-700 font-medium text-base sm:text-lg rounded-md">
+            Book Now
+          </button>
+        </NavLink>
       </div>
     </>
   );

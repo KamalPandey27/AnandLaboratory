@@ -20,6 +20,7 @@ import lalPath from "../assets/lalPath.png";
 import call from "../assets/call.svg";
 import location from "../assets/location.svg";
 import HomeContactLogo from "../assets/HomeContactLogo.png";
+import LearnMoreVedio from "../assets/LearnMoreVedio.mp4";
 export {
   about1,
   about2,
@@ -43,4 +44,5 @@ export {
   call,
   location,
   HomeContactLogo,
+  LearnMoreVedio,
 };

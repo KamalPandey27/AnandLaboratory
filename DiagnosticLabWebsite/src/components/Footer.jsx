@@ -145,7 +145,7 @@ function Footer() {
         </div>
       </footer>
       <div className="text-center bg-blue-700 w-screen p-3 text-white">
-        © 2025 YourLab. All Rights Reserved.
+        © 2025 AnandLab. All Rights Reserved.
       </div>
     </>
   );

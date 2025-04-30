@@ -16,7 +16,7 @@ function AboutUs() {
       <div className="mt-20 lg:mt-30 lg:flex-row lg:items-center lg:justify-between lg:w-[95vw]  w-[90vw]  mx-auto justify-center items-center p-10 flex flex-col-reverse ">
         <div className="lg:w-[40%] w-[100%]  p-2">
           <h1 className="text-2xl  mb-5 font-semibold">About Us</h1>
-          <p className="text-lg  ">
+          <p className="text-lg text-justify ">
             At Anand lab, we specialize in convenient, at-home blood testing
             services designed to fit your busy lifestyle. Our mission is to make
             healthcare more accessible by allowing you to book blood tests

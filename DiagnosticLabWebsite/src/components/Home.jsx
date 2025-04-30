@@ -65,7 +65,7 @@ function Home() {
               </button>
               <button className="cursor-pointer w-[140px] sm:text-[16px] text-[14px]  ">
                 <NavLink
-                  to="/AppointmentForm"
+                  to="/LearnMore"
                   className={({ isActive }) =>
                     `${
                       isActive
@@ -106,7 +106,7 @@ function Home() {
             </div>
             <button className="z-20">
               <NavLink
-                to="/AppointmentForm"
+                to="/LearnMore"
                 className={({ isActive }) =>
                   ` ${
                     isActive
@@ -137,7 +137,7 @@ function Home() {
             </div>
             <button className="z-20">
               <NavLink
-                to="/AppointmentForm"
+                to="/LearnMore"
                 className={({ isActive }) =>
                   ` ${
                     isActive
@@ -224,7 +224,7 @@ function Home() {
               <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
                 Award Winning
               </div>
-              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+              <div className=" text-gray-500 sm:text-[16px] text-[14px] text-justify">
                 Recognized for excellence in service and innovation, our team is
                 proud to deliver trusted solutions backed by industry awards and
                 client satisfaction.
@@ -235,7 +235,7 @@ function Home() {
               <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
                 Expet Doctors
               </div>
-              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+              <div className="text-justify text-gray-500 sm:text-[16px] text-[14px]">
                 Our team of certified and experienced doctors is committed to
                 providing personalized care, accurate diagnoses, and advanced
                 treatment backed by the latest medical technology.
@@ -246,7 +246,7 @@ function Home() {
               <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
                 Fair Prices
               </div>
-              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+              <div className="text-justify text-gray-500 sm:text-[16px] text-[14px]">
                 We believe quality healthcare should be accessible to all —
                 that’s why we offer transparent pricing with no hidden costs,
                 ensuring real value for your money.
@@ -257,7 +257,7 @@ function Home() {
               <div className="lg:text-2xl md:text-xl text-lg font-semibold text-center text-blue-950">
                 24/7 Support
               </div>
-              <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
+              <div className="text-justify text-gray-500 sm:text-[16px] text-[14px]">
                 Our dedicated support team is available around the clock to
                 assist you with any queries, emergencies, or appointment
                 needs—anytime, any day.
