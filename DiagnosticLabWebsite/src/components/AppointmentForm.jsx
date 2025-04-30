@@ -32,6 +32,7 @@ function AppointmentForm({
       ...formData,
       phoneNumber: Number(formData.phoneNumber),
     };
+
     try {
       setBtnValue("Form Submitting...");
       await axios.post(
