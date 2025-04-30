@@ -191,10 +191,10 @@ function Home() {
               Trusted Lab Experts and Latest Lab Technologies
             </div>
             <div className="lg:text-[16px] md:text-[15px] text-[14px] text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              tellus augue, iaculis id elit eget, ultrices pulvinar tortor.
-              Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus.
-              Pellentesque eu consequat augue.
+              Our certified lab professionals use cutting-edge diagnostic
+              equipment to deliver fast, accurate, and reliable test results.
+              With a strong focus on precision and innovation, we ensure the
+              highest standards in medical testing and patient care.
             </div>
             <div className="h-[45%] w-full flex flex-col justify-center items-center text-white relative">
               <div className="flex gap-5 sm:text-[16px] text-[10px] ">
@@ -225,8 +225,9 @@ function Home() {
                 Award Winning
               </div>
               <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur tellus augue.
+                Recognized for excellence in service and innovation, our team is
+                proud to deliver trusted solutions backed by industry awards and
+                client satisfaction.
               </div>
             </div>
             <div className="bg-white h-full  flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
@@ -235,8 +236,9 @@ function Home() {
                 Expet Doctors
               </div>
               <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur tellus augue.
+                Our team of certified and experienced doctors is committed to
+                providing personalized care, accurate diagnoses, and advanced
+                treatment backed by the latest medical technology.
               </div>
             </div>
             <div className="bg-white h-full flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
@@ -245,8 +247,9 @@ function Home() {
                 Fair Prices
               </div>
               <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur tellus augue.
+                We believe quality healthcare should be accessible to all —
+                that’s why we offer transparent pricing with no hidden costs,
+                ensuring real value for your money.
               </div>
             </div>
             <div className="bg-white h-full  flex flex-col justify-evenly items-center p-5 border-gray-300 ">
@@ -255,8 +258,9 @@ function Home() {
                 24/7 Support
               </div>
               <div className="text-center text-gray-500 sm:text-[16px] text-[14px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur tellus augue.
+                Our dedicated support team is available around the clock to
+                assist you with any queries, emergencies, or appointment
+                needs—anytime, any day.
               </div>
             </div>
           </div>
