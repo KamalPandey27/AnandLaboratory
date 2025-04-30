@@ -15,6 +15,9 @@ function AppointmentForm({
     message: "",
   });
 
+  // Handle submit button
+  const [SubmitBtn, setSubmitBtn] = useState("bg-blue-600 text-white");
+  const [btnValue, setBtnValue] = useState("Submit");
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,17 +26,21 @@ function AppointmentForm({
 
   // Submit form
   const handleSubmit = async (e) => {
+    setSubmitBtn("bg-white text-black border");
     e.preventDefault();
     const submissionData = {
       ...formData,
       phoneNumber: Number(formData.phoneNumber),
     };
     try {
+      setBtnValue("Form Submitting...");
       await axios.post(
         `${import.meta.env.VITE_API_URL}/formdata`,
         submissionData
       );
-      alert("Form submitted successfully!");
+      setSubmitBtn("bg-blue-600 text-white");
+      alert("Form Submited Successfully");
+      setBtnValue("Submit");
       setFormData({
         name: "",
         email: "",
@@ -66,6 +73,7 @@ function AppointmentForm({
             >
               <div className="flex gap-5">
                 <input
+                  required
                   type="text"
                   name="name"
                   placeholder="Name"
@@ -74,6 +82,7 @@ function AppointmentForm({
                   value={formData.name}
                 />
                 <input
+                  required
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -84,17 +93,30 @@ function AppointmentForm({
               </div>
               <div className="flex gap-5">
                 <input
-                  type="number"
+                  required
+                  type="text"
                   name="phoneNumber"
+                  maxLength="10"
+                  inputMode="numeric"
+                  pattern="[6-9]{1}[0-9]{9}"
                   placeholder="Phone"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
-                  onChange={handleChange}
                   value={formData.phoneNumber}
+                  onChange={(e) => {
+                    const { name, value } = e.target;
+                    if (!/^[6-9]{1}[0-9]{9}$/.test(value)) {
+                      alert("Please enter Correct mobile Number");
+                      return;
+                    } else {
+                      setFormData({ ...formData, [name]: value });
+                    }
+                  }}
                 />
                 <input
+                  required
                   type="text"
                   name="subject"
-                  placeholder="Subject"
+                  placeholder="Blood Test Name"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
                   value={formData.subject}
@@ -102,6 +124,7 @@ function AppointmentForm({
               </div>
               <div>
                 <textarea
+                  required
                   rows={5}
                   name="message"
                   placeholder="Your Message"
@@ -112,9 +135,9 @@ function AppointmentForm({
               </div>
               <button
                 type="submit"
-                className="bg-blue-600 text-white p-3 rounded  cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out hover:border hover:border-gray-400"
+                className={`${SubmitBtn} p-3 rounded  cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out hover:border hover:border-gray-400 `}
               >
-                Send
+                {btnValue}
               </button>
             </form>
           </div>
