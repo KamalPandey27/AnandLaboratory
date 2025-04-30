@@ -104,7 +104,10 @@ function AppointmentForm({
                   value={formData.phoneNumber}
                   onChange={(e) => {
                     const { name, value } = e.target;
-                    if (!/^[6-9]{1}[0-9]{9}$/.test(value)) {
+                    if (
+                      value.length == 10 &&
+                      !/^[6-9]{1}[0-9]{9}$/.test(value)
+                    ) {
                       alert("Please enter Correct mobile Number");
                       return;
                     } else {
