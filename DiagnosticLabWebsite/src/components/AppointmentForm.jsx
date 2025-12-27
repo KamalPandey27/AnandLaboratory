@@ -26,32 +26,40 @@ function AppointmentForm({
 
   // Submit form
   const handleSubmit = async (e) => {
-    setSubmitBtn("bg-white text-black border");
     e.preventDefault();
+
+    setSubmitBtn("bg-white text-black border");
+    setBtnValue("Form Submitting...");
+
     const submissionData = {
       ...formData,
       phoneNumber: Number(formData.phoneNumber),
     };
 
     try {
-      setBtnValue("Form Submitting...");
-      await axios.post(
+      const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/formdata`,
         submissionData
       );
-      setSubmitBtn("bg-blue-600 text-white");
-      alert("Form Submited Successfully");
-      setBtnValue("Submit");
-      setFormData({
-        name: "",
-        email: "",
-        phoneNumber: "",
-        subject: "",
-        message: "",
-      });
+
+      if (res.status === 201) {
+        alert("Form Submitted Successfully");
+
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          subject: "",
+          message: "",
+        });
+      }
     } catch (err) {
-      console.error("Error submitting form:", err);
+      console.error(err);
       alert("Error submitting form");
+    } finally {
+      // ✅ Always reset button
+      setBtnValue("Submit");
+      setSubmitBtn("bg-blue-600 text-white");
     }
   };
 
