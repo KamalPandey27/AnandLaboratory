@@ -16,6 +16,30 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
+/* =========================
+   ✅ FIX 1: CREATE TRANSPORTER ONCE
+========================= */
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // MUST be false for 587
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS, // Gmail APP PASSWORD
+  },
+});
+
+/* =========================
+   ✅ FIX 2: VERIFY MAIL CONFIG
+========================= */
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ Mail error:", error);
+  } else {
+    console.log("✅ Mail server ready");
+  }
+});
+
 // Form API
 app.post("/formdata", async (req, res) => {
   try {
@@ -32,20 +56,14 @@ app.post("/formdata", async (req, res) => {
 
     await data.save();
 
-    // 2️⃣ Send success response immediately
+    // 2️⃣ Respond SUCCESS immediately
     res.status(201).json({ message: "Form submitted successfully" });
 
-    // 3️⃣ Send email (non-blocking)
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
-
+    /* =========================
+       ✅ FIX 3: SEND MAIL SAFELY
+    ========================= */
     transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: `"Anand Lab" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
       subject: `New Appointment: ${subject}`,
       html: `
@@ -57,7 +75,7 @@ app.post("/formdata", async (req, res) => {
       `,
     });
   } catch (error) {
-    console.error(error);
+    console.error("❌ Server error:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
