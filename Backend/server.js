@@ -1,66 +1,71 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 require("dotenv").config();
-
-const AnandLabData = require("./models/AnandLabData");
-
+const mongoose = require("mongoose");
+const AnandLabData = require("./models/AnandLabData.js");
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MongoDB connection
+const port = process.env.PORT;
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
+  .then((res) => {
+    console.log("express connected to mongoose");
+    // AnandLabData.deleteMany({})
+    //   .then(() =>
+    //     console.log("All documents deleted from AnandLabData collection")
+    //   )
+    //   .catch((err) => console.log("Error deleting documents:", err));
+  })
+  .catch((err) => console.log(err));
 
-// Form API
 app.post("/formdata", async (req, res) => {
+  const { name, email, phoneNumber, subject, message } = req.body;
+  const data_1 = new AnandLabData({
+    name,
+    email,
+    phoneNumber,
+    subject,
+    message,
+  });
+
   try {
-    const { name, email, phoneNumber, subject, message } = req.body;
+    await data_1.save();
 
-    // 1️⃣ Save data to MongoDB
-    const data = new AnandLabData({
-      name,
-      email,
-      phoneNumber,
-      subject,
-      message,
-    });
-
-    await data.save();
-
-    // 2️⃣ Send success response immediately
-    res.status(201).json({ message: "Form submitted successfully" });
-
-    // 3️⃣ Send email (non-blocking)
+    // Email setup
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
+        user: process.env.GMAIL_USER, // your Gmail address
+        pass: process.env.GMAIL_PASS, // your Gmail app password
       },
     });
 
-    transporter.sendMail({
+    const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER, // send to yourself
       subject: `New Appointment: ${subject}`,
       html: `
         <h2>New Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phoneNumber}</p>
+        <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
-    });
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.send("Data saved and email sent successfully.");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+    console.log(error);
+    res.status(500).send("Something went wrong.");
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => {
+  console.log("Server run successfully");
+});
