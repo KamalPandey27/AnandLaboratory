@@ -56,10 +56,10 @@ function Home() {
               </h2>
             </div>
             <div className="flex items-center">
-              <button className="cursor-pointer sm:w-[160px] w-[130px] sm:text-[16px] text-[14px] ">
+              <button className="cursor-pointer sm:w-[160px] w-[130px] sm:text-[16px] text-[14px]  ">
                 <NavLink
                   to="/AppointmentForm"
-                  className="w-full bg-blue-600  text-white sm:px-4 sm:py-3 px-2 py-2 rounded hover:bg-white hover:text-blue-800   hover:border-1"
+                  className="w-full bg-blue-600  text-white sm:px-4 sm:py-3 px-2 py-2 rounded hover:bg-white hover:text-blue-800   hover:border-1 transition-all duration-300 ease-in-out"
                 >
                   Get Appointment
                 </NavLink>
@@ -72,7 +72,7 @@ function Home() {
                       isActive
                         ? "bg-blue-800 text-white font-semibold"
                         : "bg-gray-700 text-white"
-                    } w-full sm:px-4 sm:py-3 px-2 py-2 rounded hover:bg-blue-600 hover:text-white hover:font-semibold   `
+                    } w-full sm:px-4 sm:py-3 px-2 py-2 rounded hover:bg-blue-600 hover:text-white hover:font-semibold  transition-all duration-300 ease-in-out `
                   }
                 >
                   Learn More
