@@ -15,18 +15,18 @@ function Services() {
 
       {/*  */}
 
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center mt-10">
         <div className=" flex justify-center cursor-pointer ">
           <input
             type="text"
             placeholder="⌕ Search tests "
-            className="hover:border-gray-500 text-lg  border-2 rounded-md p-2 border-gray-300 w-[40vw]"
+            className="hover:border-gray-500 text-lg  border-2 rounded-md p-2 border-gray-300 lg:w-[40vw] cursor-pointer w-[80vw]"
           />
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <div className=" flex flex-col items-center  sm:flex-row  sm:flex lg:w-[100vw] pb-10 xl:w-[70vw] p-5  w-[90vw]  mx-auto mb-20 justify-around flex-wrap">
+      <div className="flex justify-center p-10">
+        <div className=" grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-10">
           <TestCard
             heading="Weakness"
             rate="₹ 700/-"
@@ -88,46 +88,57 @@ function Services() {
 
       {/*  */}
 
-      <div className="flex  justify-center mb-20">
-        <div className="lg:flex-row flex flex-col justify-around h-[80vh] lg:h-[20vh] items-center sm:w-[80vw] md:w-[70vw] w-[90vw] lg:w-[90vw] ">
-          <div className="bg-blue-700 w-[100%]  h-[20vh] lg:bg-blue-800 lg:w-1/3 flex items-center ">
-            <div className="h-[50%] w-[30%] ml-2 sm:w-[20%] ">
-              <img src="images/doc.png" alt="" className="h-[100%]" />
-            </div>
-            <div className="text-white p-1">
-              <h1 className="text-lg font-semibold md:text-xl mb-2">
+      <div className="flex justify-center w-full ">
+        <div className="flex flex-col lg:flex-row w-full ">
+          {/* Card 1 */}
+          <div className="flex items-center gap-4 bg-blue-700 text-white p-6 w-full lg:w-1/3">
+            <img
+              src="images/doc.png"
+              alt="Online Reports"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+            />
+            <div>
+              <h1 className="text-lg sm:text-xl font-semibold mb-1">
                 Online Reports
               </h1>
-              <p className="text-sm md:text-md">
-                With reports available online, you can get to view your results
-                wherever you want.{" "}
+              <p className="text-sm sm:text-base leading-relaxed">
+                With reports available online, you can view your results
+                anytime, anywhere.
               </p>
             </div>
           </div>
-          <div className="bg-blue-700 w-[100%] h-[20vh] lg:bg-blue-700 lg:w-1/3  flex items-center ">
-            <div className="h-[50%] w-[30%] ml-2 sm:w-[20%]  ">
-              <img src="images/stetho.png" alt="" className="h-[100%]" />
-            </div>
-            <div className="text-white p-1">
-              <h1 className="text-lg font-semibold md:text-xl mb-2">
+
+          {/* Card 2 */}
+          <div className="flex items-center gap-4 bg-blue-800 text-white p-6 w-full lg:w-1/3">
+            <img
+              src="images/stetho.png"
+              alt="Health Checkups"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+            />
+            <div>
+              <h1 className="text-lg sm:text-xl font-semibold mb-1">
                 Health Checkups
               </h1>
-              <p className="text-sm md:text-md">
-                The best time to go for health checkup is when you don't need
-                one.{" "}
+              <p className="text-sm sm:text-base leading-relaxed">
+                The best time to go for a health checkup is when you don’t need
+                one.
               </p>
             </div>
           </div>
-          <div className="bg-blue-700 w-[100%] h-[20vh] lg:bg-blue-600 lg:w-1/3 flex items-center ">
-            <div className="h-[50%] w-[30%] ml-2 sm:w-[20%] ">
-              <img src="images/homee.png" alt="" className="h-[100%]" />
-            </div>
-            <div className="text-white p-1 ">
-              <h1 className="text-lg font-semibold md:text-xl mb-2">
+
+          {/* Card 3 */}
+          <div className="flex items-center gap-4 bg-blue-600 text-white p-6 w-full lg:w-1/3">
+            <img
+              src="images/homee.png"
+              alt="Home Collection"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+            />
+            <div>
+              <h1 className="text-lg sm:text-xl font-semibold mb-1">
                 Home Collection
               </h1>
-              <p className="text-sm md:text-md xl:w-[90%]">
-                It covers all the vital parameters of your body!{" "}
+              <p className="text-sm sm:text-base leading-relaxed">
+                Covers all the vital parameters of your body with ease.
               </p>
             </div>
           </div>

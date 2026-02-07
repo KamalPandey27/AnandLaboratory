@@ -13,8 +13,8 @@ function AboutUs() {
       {/*  */}
 
       {/*  */}
-      <div className="mt-20 lg:mt-30 lg:flex-row lg:items-center lg:justify-between lg:w-[95vw]  w-[90vw]  mx-auto justify-center items-center p-10 flex flex-col-reverse ">
-        <div className="lg:w-[40%] w-[100%]  p-2">
+      <div className=" lg:flex-row lg:items-start  lg:justify-between w-screen   mx-auto justify-center items-center  flex flex-col-reverse  ">
+        <div className="lg:w-[40%] w-[100%]  px-10 py-5">
           <h1 className="text-2xl  mb-5 font-semibold">About Us</h1>
           <p className="text-lg text-justify ">
             At Anand lab, we specialize in convenient, at-home blood testing
@@ -43,7 +43,7 @@ function AboutUs() {
       {/*  */}
 
       {/*  */}
-      <div className="  mt-10 sm:mt-25  p-5  sm:p-10 flex  sm:justify-around justify-between bg-blue-500">
+      <div className=" p-5  sm:p-10 flex  sm:justify-around justify-between bg-blue-500">
         <div className="sm:p-3  text-center ">
           <h1 className="sm:text-4xl text-center text-2xl text-white font-semibold">
             7+
@@ -69,7 +69,7 @@ function AboutUs() {
 
       {/*  */}
 
-      <div className="flex flex-col p-5 mt-25 w-[80vw] mx-auto items-center md:flex-row md:justify-between md:items-center">
+      <div className="flex flex-col p-5 mt-5 w-screen mx-auto items-center md:flex-row md:justify-between md:items-center">
         <div className=" flex flex-col items-center w-1/2 ">
           <div className="border-10 lg:border-20 border-yellow-600 p-3 md:p-5 xl:w-[13vw] rounded-full w-[25vw] sm:w-[20vw] md:w-[15vw]">
             <img src="images/vision.jpg" alt="" />
@@ -83,7 +83,7 @@ function AboutUs() {
           </div>
         </div>
 
-        <div className=" flex flex-col mt-20  items-center w-1/2 ">
+        <div className=" flex flex-col mt-5  items-center w-1/2 ">
           <div className="border-10 lg:border-20 border-blue-800 p-3 md:p-5 xl:w-[13vw] rounded-full w-[25vw] sm:w-[20vw] md:w-[15vw]">
             <img src="images/mission.jpg" alt="" />
           </div>
@@ -101,41 +101,41 @@ function AboutUs() {
       {/*  */}
 
       {/*  */}
-      <div className="mt-30 bg-blue-300 p-10 w-screen  ">
+      <div className="mt-5  p-10 w-screen  ">
         <h1 className="text-3xl sm:text-4xl text-center font-semibold">
-          Our vast array of testing portfolio caters to
+          Testing Portfolio
         </h1>
       </div>
 
       <div className="flex justify-center">
-        <div className="w-screen sm:p-5 mt-20 flex flex-col items-center sm:flex sm:flex-row sm:justify-around mb-20  ">
-          <span className="w-[60vw] block sm:w-[30vw]  ">
+        <div className="w-screen sm:p-5 mt-5 flex flex-col items-center sm:flex sm:flex-row sm:justify-around mb-5  ">
+          <span className="w-[90vw] block sm:w-[30vw]  ">
             <img
               src="images/lab.jpg"
               alt=""
-              className="rounded-lg hover:scale-105 cursor-pointer"
+              className="rounded-lg hover:scale-105 cursor-pointer transition-all duration-300 ease-in-out"
             />
             <h1 className="bg-blue-700 mt-5 text-xl text-white font-semibold p-1 text-center rounded-lg  ">
               Laboratory
             </h1>
           </span>
 
-          <span className="w-[60vw] sm:mt-0 block mt-10 sm:w-[30vw]  ">
+          <span className="w-[90vw] sm:mt-0 block mt-10 sm:w-[30vw]  ">
             <img
               src="images/pathology.jpg"
               alt=""
-              className="rounded-lg hover:scale-105 cursor-pointer"
+              className="rounded-lg hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
             />
             <h1 className="bg-blue-700 mt-5 text-xl text-center text-white font-semibold p-1 rounded-lg ">
               Pathology
             </h1>
           </span>
 
-          <span className="w-[60vw] mt-10 block sm:mt-0 sm:w-[30vw] ">
+          <span className="w-[90vw] mt-10 block sm:mt-0 sm:w-[30vw] ">
             <img
               src="images/highend.png"
               alt=""
-              className="rounded-lg hover:scale-105 cursor-pointer"
+              className="rounded-lg hover:scale-105 cursor-pointer transition-all duration-300 ease-in-out"
             />
             <h1 className="bg-blue-700 mt-5 text-xl text-white font-semibold p-1 rounded-lg text-center">
               High end pathology

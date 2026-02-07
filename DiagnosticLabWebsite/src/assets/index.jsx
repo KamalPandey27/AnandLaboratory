@@ -21,6 +21,7 @@ import call from "../assets/call.svg";
 import location from "../assets/location.svg";
 import HomeContactLogo from "../assets/HomeContactLogo.png";
 import LearnMoreVedio from "../assets/LearnMoreVedio.mp4";
+import about4 from "../assets/about4.jpg";
 export {
   about1,
   about2,
@@ -45,4 +46,5 @@ export {
   location,
   HomeContactLogo,
   LearnMoreVedio,
+  about4,
 };

@@ -39,7 +39,7 @@ function AppointmentForm({
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/formdata`,
-        submissionData
+        submissionData,
       );
 
       if (res.status === 201) {

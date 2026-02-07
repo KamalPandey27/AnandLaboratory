@@ -17,6 +17,7 @@ import {
   thyrocare,
   modern,
   HomeContactLogo,
+  about4,
 } from "../assets/index";
 import AppointmentForm from "./AppointmentForm.jsx";
 function Home() {
@@ -172,11 +173,26 @@ function Home() {
                 className="h-full lg:w-full w-[50%] object-cover object-left"
               />
             </div>
+
             <img
               src={about3}
               alt="about3"
-              className="lg:w-[50%] lg:h-[45%] w-[50%] sm:h-[50%] h-[45%] object-cover object-center"
+              className=" sm:flex hidden lg:w-[50%] lg:h-[45%] w-[50%] sm:h-[50%] h-[45%] object-cover object-center"
             />
+
+            <div className="sm:hidden flex lg:w-[50%] lg:h-[45%] w-[100%] sm:h-[50%] h-[45%]">
+              <img
+                src={about3}
+                alt="about3"
+                className="h-full lg:w-full w-[50%] object-cover object-right"
+              />
+              <img
+                src={about4}
+                alt="about4"
+                className="h-full lg:w-full w-[50%] object-cover object-left"
+              />
+            </div>
+
             <div className="bg-blue-600 text-white sm:w-[50%] sm:h-[45%] w-full h-[40%] p-5 flex flex-col lg:justify-between justify-evenly items-center sm:absolute sm:right-10 sm:bottom-20">
               <img src={experience} alt="experience" />
               <div className="lg:text-7xl md:text-5xl text-4xl">7</div>
@@ -217,7 +233,7 @@ function Home() {
         {/* Ends of Some Thing About lab section  */}
 
         {/* Other section start */}
-        <section className=" w-screen lg:h-[55vh]  py-7 flex justify-center items-center ">
+        <section className=" w-screen   py-7 flex justify-center items-center ">
           <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-[90%]  shadow-[0_0_10px_rgba(0,0,0,0.15)] h-[90%] ">
             <div className="bg-white h-full flex flex-col justify-evenly items-center p-5 border-r-1 border-b-1 border-gray-200">
               <img src={award} alt="award" className="w-[70px]" />
