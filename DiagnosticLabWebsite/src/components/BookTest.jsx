@@ -36,7 +36,7 @@ function BookTest({
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/booking`,
+        `${import.meta.env.VITE_API_URL}/api/v1/booking/`,
         formData,
       );
 
