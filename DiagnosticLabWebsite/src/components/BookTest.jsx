@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function AppointmentForm({
-  PageTitle = "Contact With Us",
+function BookTest({
+  PageTitle = "Book Test",
   width = "90%",
   height = "h-[25vh]",
 }) {
@@ -11,14 +11,17 @@ function AppointmentForm({
     name: "",
     email: "",
     phoneNumber: "",
-    subject: "",
+    gender: "",
+    age: "",
     message: "",
+    date: "",
   });
 
   // Handle submit button
   const [SubmitBtn, setSubmitBtn] = useState("bg-blue-600 text-white");
-  const [btnValue, setBtnValue] = useState("Get a CallBack");
+  const [btnValue, setBtnValue] = useState("Book Test");
   // Handle input change
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -31,26 +34,23 @@ function AppointmentForm({
     setSubmitBtn("bg-white text-black border");
     setBtnValue("Form Submitting...");
 
-    const submissionData = {
-      ...formData,
-      phoneNumber: Number(formData.phoneNumber),
-    };
-
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/formdata`,
-        submissionData,
+        `${import.meta.env.VITE_API_URL}/api/v1/booking`,
+        formData,
       );
 
-      if (res.status === 201) {
+      if (res.data.success) {
         alert("Form Submitted Successfully");
 
         setFormData({
           name: "",
           email: "",
           phoneNumber: "",
-          subject: "",
+          gender: "",
+          age: "",
           message: "",
+          date: "",
         });
       }
     } catch (err) {
@@ -58,7 +58,7 @@ function AppointmentForm({
       alert("Error submitting form");
     } finally {
       // ✅ Always reset button
-      setBtnValue("Get a CallBack");
+      setBtnValue("Book Test");
       setSubmitBtn("bg-blue-600 text-white");
     }
   };
@@ -91,10 +91,9 @@ function AppointmentForm({
                   value={formData.name}
                 />
                 <input
-                  required
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email (optional)"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
                   value={formData.email}
@@ -124,14 +123,39 @@ function AppointmentForm({
                     }
                   }}
                 />
+
+                <select
+                  name="gender"
+                  required
+                  className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
+                  <option value="">Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div className="flex gap-5">
                 <input
                   required
-                  type="text"
-                  name="subject"
-                  placeholder="Blood Test Name"
+                  type="number"
+                  name="age"
+                  placeholder="Age"
+                  min={1}
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
-                  value={formData.subject}
+                />
+                <input
+                  required
+                  type="date"
+                  name="date"
+                  placeholder="Date"
+                  min={new Date().toISOString().split("T")[0]}
+                  className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
+                  onChange={handleChange}
+                  value={formData.date}
                 />
               </div>
               <div>
@@ -170,4 +194,4 @@ function AppointmentForm({
   );
 }
 
-export default AppointmentForm;
+export default BookTest;
