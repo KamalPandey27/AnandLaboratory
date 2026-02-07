@@ -35,7 +35,7 @@ function TestCard({ heading, rate, des }) {
         <p className="font-mono mt-2 text-sm sm:text-base">{des}</p>
       </div>
 
-      <NavLink to="/BookTest" className="mt-4">
+      <NavLink to="/AppointmentForm" className="mt-4">
         <button className="w-full py-2 rounded-md bg-blue-700 text-white font-medium hover:bg-blue-800 transition">
           Book Now
         </button>

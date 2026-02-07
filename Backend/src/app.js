@@ -14,7 +14,7 @@ app.use(
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Car Rental Backend is running 🚀",
+    message: "Anand lab running",
   });
 });
 
@@ -23,7 +23,4 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-// Routes
-import BookingRouter from "./routes/Booking.routes.js";
-app.use("/api/v1/booking", BookingRouter);
 export default app;
