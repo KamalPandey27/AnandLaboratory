@@ -1,5 +1,5 @@
 import React from "react";
-import TestCard from "./TestCard";
+import TestCard from "../components/TestCard";
 
 function Services() {
   return (

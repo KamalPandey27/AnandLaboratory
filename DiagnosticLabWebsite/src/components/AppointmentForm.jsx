@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 function AppointmentForm({
   PageTitle = "Contact With Us",
   width = "90%",
@@ -27,8 +27,7 @@ function AppointmentForm({
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setSubmitBtn("bg-white text-black border");
+    setSubmitBtn("bg-green-600 text-white border");
     setBtnValue("Form Submitting...");
 
     const submissionData = {
@@ -38,13 +37,12 @@ function AppointmentForm({
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/formdata`,
+        `${import.meta.env.VITE_API_URL}/api/v1/contact/contact-us`,
         submissionData,
       );
-
+      console.log(res);
       if (res.status === 201) {
-        alert("Form Submitted Successfully");
-
+        toast.success("Our Team will Contact you shortly");
         setFormData({
           name: "",
           email: "",
@@ -55,7 +53,7 @@ function AppointmentForm({
       }
     } catch (err) {
       console.error(err);
-      alert("Error submitting form");
+      toast.error("Something went wrong while submitting form");
     } finally {
       // ✅ Always reset button
       setBtnValue("Get a CallBack");
@@ -65,7 +63,7 @@ function AppointmentForm({
 
   return (
     <>
-      <section className="w-screen xl:h-screen lg:p-8">
+      <section className=" relative w-screen xl:h-screen lg:p-8">
         <div
           className={`w-[${width}] h-full flex xl:flex-row flex-col justify-between m-auto shadow-[0_0_10px_rgba(0,0,0,0.15)]`}
         >
@@ -91,10 +89,9 @@ function AppointmentForm({
                   value={formData.name}
                 />
                 <input
-                  required
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email (Optional)"
                   className="border-1 rounded w-[50%] p-3  cursor-pointer border-gray-400"
                   onChange={handleChange}
                   value={formData.email}
@@ -147,7 +144,7 @@ function AppointmentForm({
               </div>
               <button
                 type="submit"
-                className={`${SubmitBtn} p-3 rounded  cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out hover:border hover:border-gray-400 `}
+                className={`${SubmitBtn} p-3 rounded  cursor-pointer hover:bg-blue-800 hover:text-white transition-all duration-300 ease-in-out `}
               >
                 {btnValue}
               </button>

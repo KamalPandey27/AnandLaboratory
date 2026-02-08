@@ -1,6 +1,6 @@
 import React from "react";
 import { testimonial, clock, call, location } from "../assets/index.jsx";
-import AppointmentForm from "./AppointmentForm.jsx";
+import AppointmentForm from "../components/AppointmentForm.jsx";
 function Contact() {
   return (
     <>

@@ -19,7 +19,7 @@ import {
   HomeContactLogo,
   about4,
 } from "../assets/index";
-import AppointmentForm from "./AppointmentForm.jsx";
+import AppointmentForm from "../components/AppointmentForm.jsx";
 function Home() {
   return (
     <>
