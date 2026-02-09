@@ -14,7 +14,7 @@ function Header() {
     <>
       {/* navbar start */}
 
-      <nav className=" bg-white sticky top-0 z-50 flex justify-between items-center w-full h-[60px] px-4">
+      <nav className=" bg-white sticky top-0 z-50 flex justify-between items-center w-full h-[60px] px-4 shadow-lg">
         {/* navbarLogo */}
 
         <div className="text-blue-600 font-bold cursor-pointer lg:text-[25px] md:text-[16px] text-[17px]">
@@ -81,6 +81,21 @@ function Header() {
               }
             >
               Contact Us
+            </NavLink>
+          </li>
+          <li className="list-none cursor-pointer  text-center lg:w-[100px] md:w-[80px] sm:w-[75px]  lg:text-[17px] md:text-[16px] sm:text-[15px]  h-full ">
+            {" "}
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-blue-800 font-semibold border-b-[3px] border-blue-800  "
+                    : "text-black"
+                }  h-full flex items-center justify-center  hover:border-b-[3px] hover:font-semibold  hover:border-blue-800  hover:text-blue-800 transition-all duration-100 ease-in-out`
+              }
+            >
+              Admin
             </NavLink>
           </li>
         </div>
@@ -180,6 +195,21 @@ function Header() {
                 }
               >
                 Contact Us
+              </NavLink>
+            </li>
+            <li className="list-none text-lg">
+              <NavLink
+                onClick={closeMenu}
+                to="/admin"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "text-blue-800 font-semibold border-b-[3px] border-blue-800  "
+                      : "text-black"
+                  } hover:border-b-[3px] hover:font-semibold  hover:border-blue-800  hover:text-blue-800 transition-all duration-100 ease-in-out`
+                }
+              >
+                Admin
               </NavLink>
             </li>
           </div>

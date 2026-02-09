@@ -1,28 +1,64 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import Loader from "./Loader";
+import axios from "axios";
 function PaymentPage() {
+  const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [paymentDone, setPaymentDone] = useState(false);
+  const [bookingData, setBookingData] = useState({});
+  const { state } = useLocation();
+  console.log(state);
+  const handleProceed = async () => {
+    setLoading(true);
 
-  const handleProceed = () => {
     if (!paymentMethod) {
       toast.error("Please select a payment method");
+      setLoading(false);
       return;
     }
 
-    // Simulate payment success
-    setPaymentDone(true);
-    toast.success("Payment successful!");
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/booking/payment`,
+        {
+          paymentMethod,
+          bookingId: state.bookingId,
+        },
+      );
+
+      if (response.data.success) {
+        setBookingData(response.data.data);
+        setPaymentDone(true);
+        toast.success(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (!state)
+    return (
+      <div className="h-screen w-screen text-4xl flex justify-center items-center">
+        Invalid access
+      </div>
+    );
 
   if (paymentDone) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="p-6 rounded shadow bg-white text-center">
+        <div className="p-6 rounded shadow bg-white text-center flex flex-col gap-2">
           <h2 className="text-2xl font-semibold text-green-600">
             ✅ Payment Done
           </h2>
+          <div>Booking ID : {bookingData.bookingId}</div>
+          <div>Mode of Payment : {bookingData.paymentMode}</div>
+          <div>Payment Status : {bookingData.paymentStatus}</div>
+          <div>Booking Status : {bookingData.bookingStatus}</div>
           <p className="mt-2">Thank you for your payment.</p>
         </div>
       </div>
@@ -31,6 +67,7 @@ function PaymentPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      {loading && <Loader />}
       <div className="w-full max-w-md bg-white p-6 rounded shadow">
         <h2 className="text-xl font-semibold mb-4 text-center">
           Select Payment Method

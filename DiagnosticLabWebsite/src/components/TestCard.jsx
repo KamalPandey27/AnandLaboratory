@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function TestCard({ heading, rate, des }) {
+function TestCard({ heading, rate, des, id }) {
   return (
     <div
       className="
@@ -11,9 +11,10 @@ function TestCard({ heading, rate, des }) {
         border border-gray-300
         rounded-lg
         transition-all duration-300
+        ease-in-out
         hover:scale-105
-        hover:bg-gradient-to-br hover:from-blue-700 hover:to-gray-300 hover:text-white
-
+        hover:bg-gradient-to-br hover:from-blue-600 hover:to-gray-200 hover:text-white
+bg-gradient-to-br from-blue-700 to-gray-300 text-white
         w-full
         sm:max-w-sm
         md:max-w-sm
@@ -35,7 +36,7 @@ function TestCard({ heading, rate, des }) {
         <p className="font-mono mt-2 text-sm sm:text-base">{des}</p>
       </div>
 
-      <NavLink to={`/BookTest`} className="mt-4">
+      <NavLink to={`/BookTest/${id}`} className="mt-4">
         <button className="w-full py-2 rounded-md bg-blue-700 text-white font-medium hover:bg-blue-800 transition">
           Book Now
         </button>

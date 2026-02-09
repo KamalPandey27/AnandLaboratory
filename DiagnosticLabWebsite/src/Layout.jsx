@@ -5,15 +5,15 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./scrollToTop.jsx";
 import PopUpMessage from "./components/PopUpMessage.jsx";
 function Layout() {
-  const location = useLocation();
+  const isAdminPath = useLocation().pathname.startsWith("/admin");
 
   return (
     <>
       <ScrollToTop />
       <PopUpMessage />
-      {location.pathname.toString() === "/BookTest/payment" ? "" : <Header />}
+      {!isAdminPath && <Header />}
       <Outlet />
-      {location.pathname.toString() === "/BookTest/payment" ? "" : <Footer />}
+      {!isAdminPath && <Footer />}
     </>
   );
 }

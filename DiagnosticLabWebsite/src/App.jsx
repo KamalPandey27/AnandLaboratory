@@ -8,12 +8,16 @@ import LearnMore from "./components/LearnMore";
 import Layout from "./Layout";
 import BookTest from "./components/BookTest";
 import PaymentPage from "./components/PaymentPage";
+
 import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import AddTest from "./Admin/AddTest";
+import ManageTest from "./Admin/ManageTest";
+import AdminLayout from "./Admin/AdminLayout";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,9 +27,14 @@ function App() {
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="AppointmentForm" element={<AppointmentForm />} />
-        <Route path="BookTest" element={<BookTest />} />
+        <Route path="BookTest/:id" element={<BookTest />} />
         <Route path="BookTest/payment" element={<PaymentPage />} />
         <Route path="LearnMore" element={<LearnMore />} />
+
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<AddTest />} />
+          <Route path="manage-test" element={<ManageTest />} />
+        </Route>
       </Route>,
     ),
   );

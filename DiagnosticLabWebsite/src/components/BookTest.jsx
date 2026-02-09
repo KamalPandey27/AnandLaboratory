@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { BookTestVideo } from "../assets/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "./Loader";
 
 function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
+  const { id } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [otpData, setOtpData] = useState({});
+  const [OTP, setOTP] = useState("");
+
   // Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -14,6 +20,8 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
     phoneNumber: "",
     date: "",
     message: "",
+    testId: id,
+    address: "",
   });
 
   // otp
@@ -32,6 +40,7 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
   // Submit form
   const sendOTP = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setSubmitBtn("bg-green-600 text-white border");
     setBtnValue("Form Submitting...");
 
@@ -43,40 +52,63 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
 
       if (res.status === 201) {
         setOtpVerifyStep(true);
-        toast.success("Otp Sent to your phone number");
+        setOtpData(res.data.data);
+        toast.success(res.data.message);
+        setBtnValue("verifyOTP");
       }
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong while submitting form");
+      setBtnValue("Book Slot");
+      toast.error(err.response.data.message);
     } finally {
-      // ✅ Always reset button
-      setBtnValue("verifyOTP");
       setSubmitBtn("bg-blue-600 text-white");
+      setLoading(false);
     }
   };
 
   const verifyOTP = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/booking/verify-otp`,
-        formData,
+        {
+          bookingId: otpData.bookingId,
+          otp: OTP,
+        },
       );
 
-      console.log(response);
-
-      if (response.data.data.success) {
+      if (response.data.success) {
+        const data = response.data.data;
+        toast.success(response.data.message);
         setOtpVerifyStep(false);
         setBtnValue("Book Slot");
-        navigate("/BookTest/payment");
+        setFormData({
+          name: "",
+          age: "",
+          gender: "",
+          email: "",
+          phoneNumber: "",
+          date: "",
+          message: "",
+          testId: "",
+          address: "",
+        });
+        navigate("/BookTest/payment", {
+          state: data,
+        });
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && <Loader />}
       <section className="relative w-screen xl:h-screen overflow-x-hidden">
         <div className={`w-[${width}] h-full flex md:flex-row flex-col   `}>
           <div className="flex flex-col gap-5  items-center justify-center xl:w-[50%] xl:h-full w-full p-5 shadow-[inset_0_0_10px_rgba(0,0,0,0.15)]">
@@ -113,7 +145,7 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
               </div>
               <div className="flex sm:flex-row flex-col lg:gap-5 md:gap-3 gap-1">
                 <select
-                  name=""
+                  name="gender"
                   id=""
                   disabled={otpVerifyStep}
                   required
@@ -178,6 +210,20 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
                   />
                 </div>
               </div>
+              <div
+                className={` ${otpVerifyStep && " bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-70"} flex flex-col gap-3`}
+              >
+                <input
+                  required
+                  type="text"
+                  disabled={otpVerifyStep}
+                  name="address"
+                  placeholder="Enter your Address"
+                  className={`border-1 rounded w-full p-3  cursor-pointer border-gray-400 ${otpVerifyStep && " bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-70"}`}
+                  onChange={handleChange}
+                  value={formData.address}
+                />
+              </div>
               <div>
                 <textarea
                   required
@@ -195,8 +241,12 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
                   <input
                     type="number"
                     placeholder="Enter Otp"
+                    value={OTP}
+                    required
+                    onChange={(e) => setOTP(e.target.value)}
                     className="border-1 rounded w-full p-3  cursor-pointer border-gray-400"
                   />
+                  {otpData.OTP}
                 </div>
               )}
               <button
