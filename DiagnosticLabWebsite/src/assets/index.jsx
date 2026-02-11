@@ -23,6 +23,8 @@ import HomeContactLogo from "../assets/HomeContactLogo.png";
 import LearnMoreVedio from "../assets/LearnMoreVedio.mp4";
 import about4 from "../assets/about4.jpg";
 import BookTestVideo from "../assets/BookTest.mp4";
+import Video5 from "../assets/Video5.mp4";
+import AdminImage from "../assets/AdminImage.jpg";
 export {
   about1,
   about2,
@@ -48,5 +50,7 @@ export {
   HomeContactLogo,
   LearnMoreVedio,
   about4,
+  Video5,
   BookTestVideo,
+  AdminImage,
 };

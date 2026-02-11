@@ -9,7 +9,7 @@ function PaymentPage() {
   const [paymentDone, setPaymentDone] = useState(false);
   const [bookingData, setBookingData] = useState({});
   const { state } = useLocation();
-  console.log(state);
+
   const handleProceed = async () => {
     setLoading(true);
 

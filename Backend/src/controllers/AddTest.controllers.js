@@ -29,4 +29,27 @@ const getAllTest = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, allTests, "All Tests fetch successfully done"));
 });
 
-export { AddTestData, getAllTest };
+const updateTests = asyncHandler(async (req, res) => {
+  const { testId, title, price, testNames } = req.body;
+  console.log(testId, title, price, testNames);
+  if (!testId || !title || !price || !testNames.length > 0) {
+    throw new ApiError(400, "Fill Update Details");
+  }
+
+  const test = await AddTest.findById(testId);
+
+  if (!test) {
+    throw new ApiError(404, "Test not found");
+  }
+
+  test.title = title;
+  test.price = price;
+  test.testNames = testNames;
+
+  await test.save();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Test update successfully"));
+});
+export { AddTestData, getAllTest, updateTests };

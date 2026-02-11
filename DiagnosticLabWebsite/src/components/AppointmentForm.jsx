@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 function AppointmentForm({
   PageTitle = "Contact With Us",
   width = "90%",
   height = "h-[25vh]",
 }) {
+  const [loading, setLoading] = useState(false);
   // Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -19,6 +21,7 @@ function AppointmentForm({
   const [SubmitBtn, setSubmitBtn] = useState("bg-blue-600 text-white");
   const [btnValue, setBtnValue] = useState("Get a CallBack");
   // Handle input change
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -27,6 +30,7 @@ function AppointmentForm({
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setSubmitBtn("bg-green-600 text-white border");
     setBtnValue("Form Submitting...");
 
@@ -40,7 +44,6 @@ function AppointmentForm({
         `${import.meta.env.VITE_API_URL}/api/v1/contact/contact-us`,
         submissionData,
       );
-      console.log(res);
       if (res.status === 201) {
         toast.success("Our Team will Contact you shortly");
         setFormData({
@@ -58,11 +61,13 @@ function AppointmentForm({
       // ✅ Always reset button
       setBtnValue("Get a CallBack");
       setSubmitBtn("bg-blue-600 text-white");
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && <Loader />}
       <section className=" relative w-screen xl:h-screen lg:p-8">
         <div
           className={`w-[${width}] h-full flex xl:flex-row flex-col justify-between m-auto shadow-[0_0_10px_rgba(0,0,0,0.15)]`}
