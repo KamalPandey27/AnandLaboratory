@@ -5,8 +5,9 @@ const TestContext = createContext();
 
 const TestProvider = ({ children }) => {
   const [tests, setTests] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const fetchAllTests = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/add-test/get-all-tests`,
@@ -16,6 +17,8 @@ const TestProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -24,7 +27,9 @@ const TestProvider = ({ children }) => {
   }, [fetchAllTests]);
 
   return (
-    <TestContext.Provider value={{ tests, setTests, fetchAllTests }}>
+    <TestContext.Provider
+      value={{ tests, setTests, fetchAllTests, loading, setLoading }}
+    >
       {children}
     </TestContext.Provider>
   );

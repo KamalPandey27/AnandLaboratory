@@ -8,7 +8,9 @@ import LearnMore from "./components/LearnMore";
 import Layout from "./Layout";
 import BookTest from "./components/BookTest";
 import PaymentPage from "./components/PaymentPage";
-
+import Loader from "./components/Loader";
+import { useContext } from "react";
+import { TestContext } from "./context/TestContext";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -19,6 +21,10 @@ import AddTest from "./Admin/AddTest";
 import ManageTest from "./Admin/ManageTest";
 import AdminLayout from "./Admin/AdminLayout";
 function App() {
+  const { loading } = useContext(TestContext);
+  if (loading) {
+    return <Loader />;
+  }
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
