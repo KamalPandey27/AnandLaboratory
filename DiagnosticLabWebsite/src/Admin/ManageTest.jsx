@@ -27,7 +27,7 @@ function ManageTest() {
         setEdit("");
         fetchAllTests();
         toast.success(response.data.message);
-        console.log(response);
+        console.log(response.data.message);
       }
     } catch (error) {
       console.log(error);

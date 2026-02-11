@@ -2,7 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { TestContext } from "../context/TestContext";
 const AddTest = () => {
+  const { fetchAllTests } = useContext(TestContext);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [tests, setTests] = useState([""]);
@@ -42,10 +45,11 @@ const AddTest = () => {
         setTitle("");
         setPrice("");
         setTests([""]);
+        fetchAllTests();
       }
     } catch (error) {
       console.log(error);
-      toast.success(error.response.data.message);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
