@@ -149,7 +149,7 @@ Ensure you have the following installed:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/AnandLaboratory.git
+   git clone https://github.com/kamalpandey27/AnandLaboratory.git
    cd AnandLaboratory
    ```
 
@@ -205,8 +205,8 @@ Ensure you have the following installed:
    ```
 
 6. **Access the Application**
-   - Frontend: `http://localhost:5173`
-   - Backend API: `http://localhost:5000/api/v1`
+   - Frontend: `https://diagnostic-lab-eight.vercel.app/`
+   - Backend API: `https://diagnostic-lab.onrender.com`
 
 ## 📝 API Endpoints
 
@@ -316,7 +316,7 @@ This project is licensed under the ISC License.
 
 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@kamalpandey27](https://github.com/kamalpandey27)
 - Email: your.email@example.com
 
 ## 🙏 Acknowledgments
