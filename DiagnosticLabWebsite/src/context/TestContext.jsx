@@ -6,6 +6,7 @@ const TestContext = createContext();
 const TestProvider = ({ children }) => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const fetchAllTests = useCallback(async () => {
     setLoading(true);
     try {
@@ -28,7 +29,15 @@ const TestProvider = ({ children }) => {
 
   return (
     <TestContext.Provider
-      value={{ tests, setTests, fetchAllTests, loading, setLoading }}
+      value={{
+        tests,
+        setTests,
+        fetchAllTests,
+        loading,
+        setLoading,
+        admin,
+        setAdmin,
+      }}
     >
       {children}
     </TestContext.Provider>

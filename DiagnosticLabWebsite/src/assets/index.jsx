@@ -24,7 +24,9 @@ import LearnMoreVedio from "../assets/LearnMoreVedio.mp4";
 import about4 from "../assets/about4.jpg";
 import BookTestVideo from "../assets/BookTest.mp4";
 import Video5 from "../assets/Video5.mp4";
+import AddTestPageVideo from "../assets/AddTestPageVideo.mp4";
 import AdminImage from "../assets/AdminImage.jpg";
+import eye_icon from "../assets/eye_icon.svg";
 export {
   about1,
   about2,
@@ -53,4 +55,6 @@ export {
   Video5,
   BookTestVideo,
   AdminImage,
+  AddTestPageVideo,
+  eye_icon,
 };

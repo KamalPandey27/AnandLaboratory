@@ -1,0 +1,21 @@
+import mongoose from "mongoose";
+
+const loginSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+});
+
+// Define comparePassword method BEFORE creating the model
+loginSchema.methods.comparePassword = async function (password) {
+  return this.password === password;
+};
+
+const Login = mongoose.model("Login", loginSchema);
+
+export default Login;

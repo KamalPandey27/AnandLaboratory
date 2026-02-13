@@ -3,6 +3,7 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import { useContext } from "react";
+import { AddTestPageVideo } from "../assets/index";
 import { TestContext } from "../context/TestContext";
 const AddTest = () => {
   const { fetchAllTests } = useContext(TestContext);
@@ -56,9 +57,19 @@ const AddTest = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen">
+    <div className="flex justify-center items-center w-screen h-screen relative overflow-hidden  ">
+      <div className="bg-black/30 absolute top-0 left-0 w-full h-full z-1"></div>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 "
+      >
+        <source src={AddTestPageVideo} type="video/mp4" />
+      </video>
       {loading && <Loader />}
-      <div className="md:w-[50%] w-[90%] mx-auto  bg-white p-6 rounded-lg shadow-md">
+      <div className="md:w-[50%] w-[90%] mx-auto  text-white  p-6 rounded-lg shadow-md z-2 border border-white">
         <h2 className="text-2xl font-bold mb-6">Add Test</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -118,7 +129,7 @@ const AddTest = () => {
             <button
               type="button"
               onClick={addTestField}
-              className="mt-2 text-sm text-blue-600 hover:underline"
+              className="mt-2 text-sm  hover:underline"
             >
               + Add another test
             </button>

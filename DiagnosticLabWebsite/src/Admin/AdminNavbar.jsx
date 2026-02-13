@@ -30,7 +30,7 @@ const Navbar = () => {
 
           {/* Mobile Button */}
           <button
-            className="md:hidden text-gray-700 focus:outline-none"
+            className="md:hidden text-gray-700 focus:outline-none text-2xl"
             onClick={() => setIsOpen(!isOpen)}
           >
             ☰

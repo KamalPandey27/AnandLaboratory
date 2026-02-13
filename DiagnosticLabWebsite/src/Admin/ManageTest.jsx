@@ -51,8 +51,8 @@ function ManageTest() {
         </div>
       </div>
       {/* bottom part */}
-      <div className="flex w-screen">
-        <table className="w-[60%] p-5">
+      <div className="flex w-screen md:flex-row flex-col">
+        <table className="md:w-[60%] w-full sm:p-5">
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
@@ -67,7 +67,7 @@ function ManageTest() {
               <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                 Update
               </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 max-sm:hidden">
                 Cancel
               </th>
             </tr>
@@ -76,7 +76,7 @@ function ManageTest() {
           <tbody className="divide-y divide-gray-200">
             {tests.map((test) => (
               <tr key={test._id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-3 text-sm text-gray-800">
+                <td className="sm:px-4 sm:py-3 px-2 py-1 text-sm text-gray-800 text-wrap">
                   {edit === test._id ? (
                     <input
                       onChange={(e) =>
@@ -93,7 +93,7 @@ function ManageTest() {
                     String(test.title).toUpperCase()
                   )}
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-800">
+                <td className="sm:px-4 sm:py-3 px-2 py-1 text-sm text-gray-800">
                   {edit === test._id ? (
                     <input
                       onChange={(e) =>
@@ -110,7 +110,7 @@ function ManageTest() {
                     test.price
                   )}
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-800  flex flex-col gap-1">
+                <td className="sm:px-4 sm:py-3 px-2 py-1 text-sm text-gray-800  flex flex-col gap-1">
                   {edit === test._id ? (
                     <>
                       {updateTestData.testNames.map((item, index) => {
@@ -149,14 +149,14 @@ function ManageTest() {
                 </td>
                 {edit === test._id ? (
                   <td
-                    className="px-4 py-3  font-semibold text-blue-600 text-md cursor-pointer hover:text-blue-800 transition-all ease-in-out duration-300"
+                    className="sm:px-4 sm:py-3 px-2 py-1 font-semibold text-blue-600 text-md cursor-pointer hover:text-blue-800 transition-all ease-in-out duration-300"
                     onClick={HandleUpdate}
                   >
                     Save
                   </td>
                 ) : (
                   <td
-                    className="px-4 py-3  font-semibold text-blue-600 text-md cursor-pointer hover:text-blue-800 transition-all ease-in-out duration-300"
+                    className="sm:px-4 sm:py-3 px-2 py-1 font-semibold text-blue-600 text-md cursor-pointer hover:text-blue-800 transition-all ease-in-out duration-300"
                     onClick={() => {
                       setEdit(test._id);
                       setUpdateTestData({
@@ -171,7 +171,7 @@ function ManageTest() {
                   </td>
                 )}
                 <td
-                  className="px-4 py-3  font-semibold text-red-600 text-md cursor-pointer hover:text-red-800 transition-all ease-in-out duration-300 "
+                  className="sm:px-4 sm:py-3 px-2 py-1 font-semibold text-red-600 text-md cursor-pointer hover:text-red-800 transition-all ease-in-out duration-300 max-sm:hidden"
                   onClick={() => setEdit("")}
                 >
                   Cancel
@@ -180,7 +180,7 @@ function ManageTest() {
             ))}
           </tbody>
         </table>
-        <div className="w-[40%] h-screen sticky top-0">
+        <div className="md:w-[40%] w-full h-screen sticky top-0">
           <video
             src={Video5}
             autoPlay
