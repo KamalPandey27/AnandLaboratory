@@ -314,10 +314,10 @@ This project is licensed under the ISC License.
 
 ## 👨‍💻 Developer
 
-**Your Name**
+**Kamal**
 
 - GitHub: [@kamalpandey27](https://github.com/kamalpandey27)
-- Email: your.email@example.com
+- Email: kamal0000027@gmail.com
 
 ## 🙏 Acknowledgments
 
