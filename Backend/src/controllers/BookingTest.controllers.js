@@ -3,6 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { BookTest } from "../models/BookTest.models.js";
 import crypto from "crypto";
+import { sendEmail } from "../utils/SendMail.js";
 const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
@@ -123,7 +124,7 @@ const payment = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Select payment mode");
   }
 
-  const booking = await BookTest.findById(bookingId);
+  const booking = await BookTest.findById(bookingId).populate("testDetails");
 
   if (!booking) {
     throw new ApiError(404, "Booking not found");
@@ -142,6 +143,40 @@ const payment = asyncHandler(async (req, res) => {
   booking.bookingStatus = "confirmed";
 
   await booking.save();
+  await sendEmail({
+    to: process.env.EMAIL_USER,
+    subject: "New Test Booking Received",
+    html: `<p>A new test booking has been made with the following details:</p>
+           <ul>
+             <li><strong>Name:</strong> ${booking.name}</li>
+             <li><strong>Age:</strong> ${booking.age}</li>
+             <li><strong  >Gender:</strong> ${booking.gender}</li>  
+              <li><strong>Phone Number:</strong> ${booking.phoneNumber}</li>
+              <li><strong>Email:</strong> ${booking.email}</li>
+              <li><strong>Address:</strong> ${booking.address}</li>
+              <li><strong>Test:</strong> ${booking.testDetails.title}</li>
+              <li><strong>Test:</strong> ${booking.testDetails.price}</li>
+              <li><strong>Date of Booking:</strong> ${booking.dateOfBooking}</li>
+              <li><strong>Message:</strong> ${booking.message}</li>
+           </ul>
+            <p>Please contact the customer to confirm the details and arrange for the test.</p>
+            <p>Best regards,<br/>Car Rental Team</p>`,
+  });
+
+  await sendEmail({
+    to: booking.email,
+    subject: "Your Test Booking is Confirmed",
+    html: `<p>Dear ${booking.name},</p>
+           <p>Your booking for the test "${booking.testDetails.title}" has been confirmed.</p>
+           <p>Booking Details:</p>
+           <ul>
+             <li><strong>Test:</strong> ${booking.testDetails.title}</li>
+             <li><strong>Date:</strong> ${booking.dateOfBooking}</li>
+             <li><strong>Address:</strong> ${booking.address}</li>
+           </ul>  
+            <p>Thank you for choosing our service. We will contact you shortly with further details.</p>
+            <p>Best regards,<br/>Car Rental Team</p>`,
+  });
 
   return res.status(200).json(
     new ApiResponse(
