@@ -6,11 +6,9 @@ import { TestContext } from "../context/TestContext";
 function Services() {
   const { tests } = useContext(TestContext);
   const [filteredTests, setFilteredTests] = useState(tests);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
     if (query === "") {
       setFilteredTests(tests);
     } else {
@@ -42,7 +40,6 @@ function Services() {
             type="text"
             onChange={handleSearch}
             placeholder="⌕ Search tests "
-            value={searchQuery}
             className="hover:border-gray-500 text-lg  border-2 rounded-md p-2 border-gray-300 lg:w-[40vw] cursor-pointer w-[80vw]"
           />
         </div>

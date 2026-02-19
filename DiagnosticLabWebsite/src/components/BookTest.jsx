@@ -12,6 +12,7 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
   const [OTP, setOTP] = useState("");
 
   // Form State
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -31,6 +32,7 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
   // Handle submit button
   const [SubmitBtn, setSubmitBtn] = useState("bg-blue-600 text-white");
   const [btnValue, setBtnValue] = useState("Book Slot");
+  
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +40,7 @@ function BookTest({ PageTitle = "Book Your Test", width = "100%" }) {
   };
 
   // Submit form
-  
+
   const sendOTP = async (e) => {
     e.preventDefault();
     setLoading(true);
