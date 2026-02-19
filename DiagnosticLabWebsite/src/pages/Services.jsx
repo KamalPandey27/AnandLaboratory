@@ -1,9 +1,27 @@
 import React from "react";
 import TestCard from "../components/TestCard";
 import { useContext } from "react";
+import { useState } from "react";
 import { TestContext } from "../context/TestContext";
 function Services() {
   const { tests } = useContext(TestContext);
+  const [filteredTests, setFilteredTests] = useState(tests);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    if (query === "") {
+      setFilteredTests(tests);
+    } else {
+      const filtered = tests.filter(
+        (test) =>
+          test.title.toLowerCase().includes(query) ||
+          test.testNames.some((name) => name.toLowerCase().includes(query)),
+      );
+      setFilteredTests(filtered);
+    }
+  };
 
   return (
     <>
@@ -22,7 +40,9 @@ function Services() {
         <div className=" flex justify-center cursor-pointer ">
           <input
             type="text"
+            onChange={handleSearch}
             placeholder="⌕ Search tests "
+            value={searchQuery}
             className="hover:border-gray-500 text-lg  border-2 rounded-md p-2 border-gray-300 lg:w-[40vw] cursor-pointer w-[80vw]"
           />
         </div>
@@ -30,7 +50,7 @@ function Services() {
 
       <div className="flex justify-center p-10">
         <div className=" grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-10">
-          {tests.map((item, index) => {
+          {filteredTests.map((item, index) => {
             return (
               <TestCard
                 key={index}

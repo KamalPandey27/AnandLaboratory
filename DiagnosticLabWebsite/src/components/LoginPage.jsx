@@ -87,10 +87,6 @@ const LoginPage = () => {
             Login
           </button>
         </form>
-
-        <p className="mt-4 text-center text-sm text-gray-600 cursor-pointer hover:text-blue-700 transition duration-200 text-md font-semibold">
-          Forget Password
-        </p>
       </div>
     </div>
   );

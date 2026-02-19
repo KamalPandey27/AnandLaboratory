@@ -11,6 +11,7 @@ const AddTest = () => {
   const [price, setPrice] = useState("");
   const [tests, setTests] = useState([""]);
   const [loading, setLoading] = useState(false);
+  
   const handleTestChange = (index, value) => {
     const updatedTests = [...tests];
     updatedTests[index] = value;
