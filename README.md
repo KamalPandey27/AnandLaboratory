@@ -4,12 +4,29 @@ A full-stack diagnostic laboratory management system with a React frontend and N
 
 ## 🚀 Project Overview
 
-Anand Laboratory is a web application for managing a diagnostic center's operations, including:
+**Live Demo:** [Anand Laboratory Website](https://diagnostic-lab-eight.vercel.app/)
 
-- Patient test booking and appointments
-- Test management for administrators
-- Contact form submissions
-- User authentication for admin access
+Anand Laboratory is a diagnostic center web application that provides:
+
+- **At-home blood testing services** - Book lab tests online and have certified phlebotomists collect samples from your home
+- **Online test booking** with OTP verification for patient authentication
+- **Multiple payment options** - UPI, Card, Cash, Netbanking
+- **Admin panel** for managing diagnostic tests and bookings
+- **Email notifications** for booking confirmations and contact inquiries
+
+### Statistics
+
+- 7+ Years of Experience
+- 10,000+ Tests Done
+- 1ied Customers
+
+### Partnered Labs,000+ Satisf
+
+- Lal Path
+- Thyrocare
+- SRL
+- Prognosis
+- Modern
 
 ## 📁 Project Structure
 
@@ -18,23 +35,49 @@ AnandLaboratory/
 ├── Backend/                    # Node.js Express API
 │   ├── src/
 │   │   ├── controllers/       # Request handlers
-│   │   ├── db/               # Database connection
-│   │   ├── middleware/       # Express middleware
-│   │   ├── models/          # Mongoose schemas
-│   │   ├── routes/          # API route definitions
-│   │   ├── utils/           # Utility functions
-│   │   ├── app.js           # Express app configuration
-│   │   └── server.js        # Server entry point
+│   │   │   ├── BookingTest.controllers.js   # OTP & payment handling
+│   │   │   ├── AddTest.controllers.js     # Test management
+│   │   │   ├── Contact.controllers.js     # Contact form
+│   │   │   └── Login.controller.js         # Admin authentication
+│   │   ├── db/               # MongoDB connection
+│   │   ├── models/           # Mongoose schemas
+│   │   │   ├── BookTest.models.js   # Booking schema
+│   │   │   ├── AddTest.models.js    # Test package schema
+│   │   │   ├── ContactUs.models.js  # Contact schema
+│   │   │   └── Login.models.js       # Admin user schema
+│   │   ├── routes/           # API route definitions
+│   │   ├── utils/            # Utility functions
+│   │   │   ├── asyncHandler.js
+│   │   │   ├── ApiError.js
+│   │   │   ├── ApiResponse.js
+│   │   │   └── SendMail.js   # Email service (Brevo)
+│   │   ├── app.js            # Express app configuration
+│   │   └── server.js         # Server entry point
 │   └── package.json
 │
 └── DiagnosticLabWebsite/      # React Frontend (Vite)
     ├── src/
-    │   ├── Admin/            # Admin panel components
-    │   ├── assets/          # Images, videos, icons
-    │   ├── components/      # Reusable React components
-    │   ├── context/         # React context providers
-    │   ├── pages/           # Page components
-    │   └── App.jsx          # Main app component
+    │   ├── Admin/            # Admin panel
+    │   │   ├── AddTest.jsx       # Add new test packages
+    │   │   ├── ManageTest.jsx    # Edit/delete tests
+    │   │   ├── AdminLayout.jsx
+    │   │   └── AdminNavbar.jsx
+    │   ├── assets/           # Images, videos, icons
+    │   ├── components/       # Reusable React components
+    │   │   ├── BookTest.jsx      # Booking with OTP verification
+    │   │   ├── PaymentPage.jsx   # Payment selection
+    │   │   ├── AppointmentForm.jsx
+    │   │   ├── Header.jsx
+    │   │   ├── Footer.jsx
+    │   │   └── ...
+    │   ├── context/          # React context
+    │   │   └── TestContext.jsx
+    │   ├── pages/
+    │   │   ├── Home.jsx          # Hero, features, stats
+    │   │   ├── About.jsx         # Vision, mission, portfolio
+    │   │   ├── Services.jsx
+    │   │   └── Contact.jsx
+    │   └── App.jsx
     └── package.json
 ```
 
@@ -42,46 +85,112 @@ AnandLaboratory/
 
 ### Backend
 
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Database:** MongoDB (via Mongoose)
-- **Authentication:** JWT + bcrypt
-- **Email:** Nodemailer (Brevo/SMTP)
-- **Other:** CORS, dotenv
+| Technology | Purpose                       |
+| ---------- | ----------------------------- |
+| Node.js    | Runtime environment           |
+| Express.js | Web framework                 |
+| MongoDB    | Database                      |
+| Mongoose   | ODM for MongoDB               |
+| Nodemailer | Email sending (Brevo SMTP)    |
+| CORS       | Cross-origin resource sharing |
+| dotenv     | Environment variables         |
 
 ### Frontend
 
-- **Framework:** React 19
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **Routing:** React Router DOM
-- **HTTP Client:** Axios
-- **Notifications:** React Toastify
+| Technology       | Purpose       |
+| ---------------- | ------------- |
+| React 19         | UI framework  |
+| Vite             | Build tool    |
+| Tailwind CSS     | Styling       |
+| React Router DOM | Routing       |
+| Axios            | HTTP client   |
+| React Toastify   | Notifications |
 
 ## 🔌 API Endpoints
 
-### Contact
+### Contact (`/api/v1/contact`)
 
-- `POST /api/v1/contact` - Submit contact form
+| Method | Endpoint | Description         |
+| ------ | -------- | ------------------- |
+| POST   | `/`      | Submit contact form |
 
-### Booking
+**Request Body:**
 
-- `GET /api/v1/booking/` - Get all bookings
-- `POST /api/v1/booking/` - Create new booking
-- `PUT /api/v1/booking/:id` - Update booking status
-- `DELETE /api/v1/booking/:id` - Delete booking
+```json
+{
+  "name": "string",
+  "email": "string",
+  "phoneNumber": "string",
+  "subject": "string",
+  "message": "string"
+}
+```
 
-### Tests
+### Booking (`/api/v1/booking`)
 
-- `GET /api/v1/add-test/` - Get all tests
-- `POST /api/v1/add-test/` - Add new test
-- `PUT /api/v1/add-test/:id` - Update test
-- `DELETE /api/v1/add-test/:id` - Delete test
+| Method | Endpoint      | Description                            |
+| ------ | ------------- | -------------------------------------- |
+| POST   | `/send-otp`   | Create booking and send OTP            |
+| POST   | `/verify-otp` | Verify OTP and confirm booking         |
+| POST   | `/payment`    | Process payment after OTP verification |
 
-### Authentication
+**Send OTP Request Body:**
 
-- `POST /api/v1/auth/login` - Admin login
-- `POST /api/v1/auth/register` - Register new admin
+```json
+{
+  "name": "string",
+  "age": "number",
+  "gender": "male|female|other",
+  "email": "string",
+  "phoneNumber": "string",
+  "date": "date",
+  "address": "string",
+  "message": "string",
+  "testId": "string"
+}
+```
+
+**Payment Request Body:**
+
+```json
+{
+  "bookingId": "string",
+  "paymentMethod": "upi|card|cash|netbanking"
+}
+```
+
+### Tests (`/api/v1/add-test`)
+
+| Method | Endpoint          | Description          |
+| ------ | ----------------- | -------------------- |
+| POST   | `/add-blood-test` | Add new test package |
+| GET    | `/`               | Get all tests        |
+| PATCH  | `/update-tests`   | Update test details  |
+
+**Add Test Request Body:**
+
+```json
+{
+  "title": "string",
+  "price": "number",
+  "tests": ["string", "string"]
+}
+```
+
+### Authentication (`/api/v1/auth`)
+
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| POST   | `/login` | Admin login |
+
+**Login Request Body:**
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
 
 ## 🏃‍♂️ Getting Started
 
@@ -104,9 +213,9 @@ Create a `.env` file in the Backend directory:
 PORT=3000
 MONGODB_URI=your_mongodb_connection_string
 CORS_ORIGIN=http://localhost:5173
-JWT_SECRET=your_jwt_secret
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
+BREVO_API_KEY=your_brevo_api_key
 ```
 
 Start the backend server:
@@ -129,7 +238,7 @@ npm install
 Create a `.env` file in the DiagnosticLabWebsite directory:
 
 ```env
-VITE_API_URL=http://localhost:3000/api/v1
+VITE_API_URL=https://diagnostic-lab.onrender.com
 ```
 
 Start the frontend development server:
@@ -142,39 +251,25 @@ npm run dev
 
 ### Patient Features
 
-- Browse available diagnostic tests
-- Book appointments online
-- View test details and pricing
-- Contact the laboratory
+- Browse available diagnostic test packages
+- Book appointments online with OTP verification
+- Select payment method (UPI, Card, Cash, Netbanking)
+- View test details, prices, and individual test names
+- Contact the laboratory via contact form
+- At-home sample collection
 
 ### Admin Features
 
-- Dashboard for managing bookings
-- Add/Edit/Delete diagnostic tests
-- View and manage contact submissions
-- Secure admin authentication
-
-## 🔧 Available Scripts
-
-### Backend
-
-```bash
-npm run dev    # Start with nodemon
-npm start     # Start production server
-```
-
-### Frontend
-
-```bash
-npm run dev    # Start development server
-npm run build  # Build for production
-npm run preview # Preview production build
-```
+- Login authentication
+- Add new diagnostic test packages (title, price, individual tests)
+- Edit existing test packages
+- View all bookings
+- Manage test inventory
 
 ## 📄 License
 
 ISC
 
-## 👨‍💻 Author
+## 👨‍💻KAMAL
 
 Anand Laboratory Team
