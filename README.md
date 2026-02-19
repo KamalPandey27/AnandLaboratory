@@ -2,7 +2,7 @@
 
 A modern, full-stack web application for a diagnostic laboratory that enables patients to book lab tests online, manage appointments, and allows administrators to efficiently manage tests and bookings. Built with React, Node.js, Express, and MongoDB.
 
-![Anand Laboratory](https://via.placeholder.com/1200x600?text=Anand+Diagnostic+Laboratory)
+![Anand Laboratory](https://cdn.pixabay.com/photo/2017/10/04/09/56/chemist-2815640_1280.jpg)
 
 ## ✨ Features
 
@@ -314,10 +314,10 @@ This project is licensed under the ISC License.
 
 ## 👨‍💻 Developer
 
-**Your Name**
+**Kamal**
 
 - GitHub: [@kamalpandey27](https://github.com/kamalpandey27)
-- Email: your.email@example.com
+- Email: kamal0000027@gmail.com
 
 ## 🙏 Acknowledgments
 
