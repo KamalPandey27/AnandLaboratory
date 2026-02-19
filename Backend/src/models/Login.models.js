@@ -11,7 +11,6 @@ const loginSchema = new mongoose.Schema({
   },
 });
 
-// Define comparePassword method BEFORE creating the model
 loginSchema.methods.comparePassword = async function (password) {
   return this.password === password;
 };

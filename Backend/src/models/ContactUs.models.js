@@ -8,11 +8,13 @@ const contactUsSchema = new Schema(
       trim: true,
       required: true,
     },
+
     email: {
       type: String,
       lowercase: true,
       trim: true,
     },
+
     phoneNumber: {
       type: Number,
       trim: true,

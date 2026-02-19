@@ -52,7 +52,7 @@ const sendOtp = asyncHandler(async (req, res) => {
   });
 
   return res
-    .status(201)
+    .status(201)              
     .json(
       new ApiResponse(
         201,
